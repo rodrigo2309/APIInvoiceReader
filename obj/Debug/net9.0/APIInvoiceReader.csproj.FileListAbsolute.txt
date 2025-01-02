@@ -26,3 +26,4 @@ C:\Projetos\C#\APIInvoiceReader\obj\Debug\net9.0\refint\APIInvoiceReader.dll
 C:\Projetos\C#\APIInvoiceReader\obj\Debug\net9.0\APIInvoiceReader.pdb
 C:\Projetos\C#\APIInvoiceReader\obj\Debug\net9.0\APIInvoiceReader.genruntimeconfig.cache
 C:\Projetos\C#\APIInvoiceReader\obj\Debug\net9.0\ref\APIInvoiceReader.dll
+C:\Projetos\C#\APIInvoiceReader\obj\Debug\net9.0\APIInvoiceReader.sourcelink.json

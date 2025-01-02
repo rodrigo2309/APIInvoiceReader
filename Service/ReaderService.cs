@@ -8,14 +8,20 @@ namespace APIInvoiceReader.Service
     public ReaderResponse Get(ReaderRequest request)
     {
       var response = new ReaderResponse();
-      var bytes = Convert.FromBase64String(request.file64);
-      var conteudoCsv = Encoding.UTF8.GetString(bytes);
 
       var conta = new Account() { data = Convert.ToString(DateTime.Now), title = "nubank", valor = 50 };
 
       response.Add(conta);
 
       return response;
+    }
+
+    public string DesconvertBase64(string base64)
+    {
+      var bytes = Convert.FromBase64String(base64);
+      var conteudoCsv = Encoding.UTF8.GetString(bytes);
+
+      return conteudoCsv;
     }
   }
 

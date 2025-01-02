@@ -14,9 +14,9 @@ namespace APIInvoiceReader.Controller
       this.readerService = readerService;
     }
 
-    [HttpGet("rota/{file64}")]
+    [HttpPost]
     [Route("Read")]
-    public ReaderResponse Get(ReaderRequest request)
+    public ReaderResponse Get([FromBody] ReaderRequest request)
     {
       return readerService.Get(request);
     }

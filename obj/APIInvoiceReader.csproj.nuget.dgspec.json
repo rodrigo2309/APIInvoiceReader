@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj": {}
+    "c:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj": {
+    "c:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj",
+        "projectUniqueName": "c:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj",
         "projectName": "APIInvoiceReader",
-        "projectPath": "C:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj",
+        "projectPath": "c:\\Projetos\\C#\\APIInvoiceReader\\APIInvoiceReader.csproj",
         "packagesPath": "C:\\Users\\drigo\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\C#\\APIInvoiceReader\\obj\\",
+        "outputPath": "c:\\Projetos\\C#\\APIInvoiceReader\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
