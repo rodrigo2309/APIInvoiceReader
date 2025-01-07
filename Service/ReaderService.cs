@@ -9,9 +9,7 @@ namespace APIInvoiceReader.Service
     {
       var response = new ReaderResponse();
 
-      var conta = new Account() { data = Convert.ToString(DateTime.Now), title = "nubank", valor = 50 };
-
-      response.Add(conta);
+      response = Teste();
 
       return response;
     }
@@ -22,6 +20,17 @@ namespace APIInvoiceReader.Service
       var conteudoCsv = Encoding.UTF8.GetString(bytes);
 
       return conteudoCsv;
+    }
+
+    public ReaderResponse Teste()
+    {
+      var response = new ReaderResponse();
+
+      var conta = new Account() { data = Convert.ToString(DateTime.Now), title = "nubank", valor = 50 };
+
+      response.Add(conta);
+
+      return response;
     }
   }
 
