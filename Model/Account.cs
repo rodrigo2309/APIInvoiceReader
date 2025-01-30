@@ -4,7 +4,7 @@ namespace APIInvoiceReader.Model
   {
     public string data { get; set; }
     public string title { get; set; }
-    public double valor { get; set; }
+    public string valor { get; set; }
   }
 
 }
