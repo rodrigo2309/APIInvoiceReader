@@ -7,33 +7,34 @@ namespace APIInvoiceReader.Service
   {
     public ReaderResponse Get(ReaderRequest request)
     {
+      var conteudo = DesconvertBase64(request.file64);
+
       var response = new ReaderResponse();
 
-      response = ReadFile();
-
-      //response = Teste();
+      response = ReadFile(conteudo);
 
       return response;
     }
 
-    public ReaderResponse ReadFile()
+    public ReaderResponse ReadFile(string conteudo)
     {
-      string filePath = "C:/Users/drigo/Downloads/Nubank_2025-01-02.csv";
-
       var response = new ReaderResponse();
+      List<Account> listaAccount = new List<Account>();
 
-      using (StreamReader reader = new StreamReader(filePath))
+      string[] linhas = conteudo.Split('\n');
+
+      for (int i = 1; i < linhas.Length; i++)
       {
-        while (!reader.EndOfStream)
-        {
-          string linha = reader.ReadLine();
-          string[] valores = linha.Split(',');
+        if (string.IsNullOrWhiteSpace(linhas[i])) continue;
 
-          response.Add(new Account() { data = valores[0], title = valores[1], valor = valores[2] });
+        string[] colunas = linhas[i].Split(',');
 
-          Console.WriteLine(string.Join(" | ", valores));
-        }
+        Account account = new Account(colunas[0].Trim(), colunas[1].Trim(), colunas[2].Trim());
+
+        listaAccount.Add(account);
       }
+
+      response.AddRange(listaAccount.OrderBy(a => a.title).Select(a => a).ToList());
 
       return response;
     }
@@ -41,7 +42,7 @@ namespace APIInvoiceReader.Service
     public string DesconvertBase64(string base64)
     {
       var bytes = Convert.FromBase64String(base64);
-      var conteudoCsv = Encoding.UTF8.GetString(bytes);
+      var conteudoCsv = System.Text.Encoding.UTF8.GetString(bytes);
 
       return conteudoCsv;
     }
@@ -50,9 +51,9 @@ namespace APIInvoiceReader.Service
     {
       var response = new ReaderResponse();
 
-      var conta = new Account() { data = Convert.ToString(DateTime.Now), title = "nubank", valor = "50" };
+      // var conta = new Account() { data = Convert.ToString(DateTime.Now), title = "nubank", valor = "50" };
 
-      response.Add(conta);
+      // response.Add(conta);
 
       return response;
     }

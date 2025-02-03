@@ -1,6 +1,12 @@
 using APIInvoiceReader.Service;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// builder.Services.AddDbContext<TodoContext>(opt =>
+//     opt.UseInMemoryDatabase("TodoList"));
+
+builder.Services.AddDbContext<InvoiceReaderDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 builder.Services.AddTransient<IReaderService, ReaderService>();
@@ -22,9 +28,6 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
   });
 });
-
-// builder.Services.AddDbContext<TodoContext>(opt =>
-//     opt.UseInMemoryDatabase("TodoList"));
 
 var app = builder.Build();
 

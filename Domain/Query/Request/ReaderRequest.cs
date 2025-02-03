@@ -1,4 +1,4 @@
 public class ReaderRequest
 {
-  public string file64 { get; set; }
+  public required string file64 { get; set; }
 }
