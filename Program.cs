@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.Services.AddDbContext<TodoContext>(opt =>
-//     opt.UseInMemoryDatabase("TodoList"));
-
 builder.Services.AddDbContext<InvoiceReaderDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddControllers();
+builder.Services.AddDbContext<InvoiceReaderDbContext, InvoiceReaderDbContext>();
 builder.Services.AddTransient<IReaderService, ReaderService>();
+builder.Services.AddTransient<IAccountTypeService, AccountTypeService>();
+builder.Services.AddTransient<IAccountTypeRepository, AccountTypeRepository>();
+builder.Services.AddControllers();
 
 // Adicione serviços de CORS
 builder.Services.AddCors(options =>

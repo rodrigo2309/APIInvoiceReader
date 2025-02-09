@@ -1,6 +1,5 @@
 using APIInvoiceReader.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 
 namespace APIInvoiceReader.Controller
 {

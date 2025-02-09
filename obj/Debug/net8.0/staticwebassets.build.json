@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "CLVJDRsqOI2N7NZH8qamdgIRXGKtfK103vU7pQYALR8=",
+  "Source": "APIInvoiceReader",
+  "BasePath": "_content/APIInvoiceReader",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

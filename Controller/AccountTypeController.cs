@@ -1,40 +1,64 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 [Route("api/TipoContas")]
 [ApiController]
 public class AccountTypeController : ControllerBase
 {
-  private readonly InvoiceReaderDbContext _context;
+  private readonly IAccountTypeService _accountTypeService;
 
-  public AccountTypeController(InvoiceReaderDbContext context)
+  public AccountTypeController(IAccountTypeService accountTypeService)
   {
-    _context = context;
+    this._accountTypeService = accountTypeService;
   }
 
   [HttpGet]
   [Route("GetByUser")]
   public async Task<IActionResult> GetByUser(GetByUserRequest request)
   {
-    GetByUserResponse response = [.. await _context.TipoContas.Where(it => it.usuario == request.usuario).ToListAsync()];
+    return Ok(await this._accountTypeService.GetByUser(request).ConfigureAwait(false));
+  }
+
+  [HttpPost]
+  [Route("Insert")]
+  public async Task<IActionResult> Create(CreateRequest request)
+  {
+    var response = await this._accountTypeService.Create(request).ConfigureAwait(false);
 
     return Ok(response);
   }
 
-  [HttpGet]
-  [Route("HealthCheck")]
-  public void HealthChecksBuilderAddCheckExtensions()
+  [HttpPost]
+  [Route("Update")]
+  public async Task<IActionResult> Update(AccountType request)
   {
-    _context.Database.OpenConnection();
+    var response = await this._accountTypeService.Update(request).ConfigureAwait(false);
 
-    try
-    {
-      _context.Database.OpenConnection();
-      Console.WriteLine("Conexão bem-sucedida!");
-    }
-    catch (Exception ex)
-    {
-      Console.WriteLine($"Erro na conexão: {ex.Message}");
-    }
+    return Ok(response);
   }
+
+  [HttpPost]
+  [Route("Delete")]
+  public async Task<IActionResult> Delete(int id)
+  {
+    var response = await this._accountTypeService.Delete(id).ConfigureAwait(false);
+
+    return Ok(response);
+  }
+
+  // [HttpGet]
+  // [Route("HealthCheck")]
+  // public void HealthChecksBuilderAddCheckExtensions()
+  // {
+  //   _context.Database.OpenConnection();
+
+  //   try
+  //   {
+  //     _context.Database.OpenConnection();
+  //     Console.WriteLine("Conexão bem-sucedida!");
+  //   }
+  //   catch (Exception ex)
+  //   {
+  //     Console.WriteLine($"Erro na conexão: {ex.Message}");
+  //   }
+  // }
 }
