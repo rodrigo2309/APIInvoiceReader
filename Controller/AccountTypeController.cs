@@ -1,14 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 [Route("api/TipoContas")]
 [ApiController]
 public class AccountTypeController : ControllerBase
 {
   private readonly IAccountTypeService _accountTypeService;
+  private readonly InvoiceReaderDbContext_MySQL _context;
 
-  public AccountTypeController(IAccountTypeService accountTypeService)
+  public AccountTypeController(IAccountTypeService accountTypeService, InvoiceReaderDbContext_MySQL context)
   {
     this._accountTypeService = accountTypeService;
+    _context = context;
+  }
+
+  [HttpGet]
+  [Route("HealthCheck")]
+  public void HealthChecksBuilderAddCheckExtensions()
+  {
+    // FormattableString formattableString = new();
+    try
+    {
+      _context.Database.OpenConnection();
+      Console.WriteLine("Conexão bem-sucedida!");
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"Erro na conexão: {ex.Message}");
+    }
   }
 
   [HttpGet]
@@ -19,7 +38,7 @@ public class AccountTypeController : ControllerBase
   }
 
   [HttpPost]
-  [Route("Insert")]
+  [Route("Create")]
   public async Task<IActionResult> Create(CreateRequest request)
   {
     var response = await this._accountTypeService.Create(request).ConfigureAwait(false);
@@ -38,9 +57,9 @@ public class AccountTypeController : ControllerBase
 
   [HttpPost]
   [Route("Delete")]
-  public async Task<IActionResult> Delete(int id)
+  public async Task<IActionResult> Delete(DeleteRequest request)
   {
-    var response = await this._accountTypeService.Delete(id).ConfigureAwait(false);
+    var response = await this._accountTypeService.Delete(request).ConfigureAwait(false);
 
     return Ok(response);
   }

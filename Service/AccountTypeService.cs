@@ -29,18 +29,33 @@ public class AccountTypeService : IAccountTypeService
 
   public async Task<string> Update(AccountType obj)
   {
-    _accountTypeRepository.Update(obj);
+    var existingUser = await _accountTypeRepository.GetById(obj.id);
+
+    if (existingUser != null)
+    {
+      existingUser.nome = obj.nome;
+      existingUser.conta = obj.conta;
+      existingUser.contem = obj.contem;
+      existingUser.usuario = obj.usuario;
+
+      //return NotFound(new { message = "Usuário não encontrado." });
+      _accountTypeRepository.Update(existingUser);
+    }
 
     return await Task.FromResult("Atualizado com sucesso!!");
   }
 
-  public async Task<string> Delete(int id)
+  public async Task<DeleteResponse> Delete(DeleteRequest request)
   {
-    var accountType = await _accountTypeRepository.GetById(id);
+    var response = new DeleteResponse();
+
+    var accountType = await _accountTypeRepository.GetByNome(request.nome);
 
     _accountTypeRepository.Delete(accountType);
 
-    return await Task.FromResult("Registro deletado!");
+    response.mensagem = "Registro deletado!";
+
+    return response;
   }
 
 

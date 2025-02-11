@@ -1,8 +1,8 @@
 public class BaseRepository<T> : IBaseRepository<T>
 {
-  private readonly InvoiceReaderDbContext _context;
+  private readonly InvoiceReaderDbContext_MySQL _context;
 
-  public BaseRepository(InvoiceReaderDbContext context)
+  public BaseRepository(InvoiceReaderDbContext_MySQL context)
   {
     _context = context;
   }

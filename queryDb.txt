@@ -1,0 +1,42 @@
+create table TipoContas(
+    id int identity(1,1) primary key,
+    nome varchar(100) not null,
+    conta varchar(100) not null,
+    contem BIT not null DEFAULT 0,
+    usuario VARCHAR(100) not null
+)
+
+alter table TipoContas ADD usuario VARCHAR(100) not null
+
+create table TipoContas(
+    id int identity(1,1) primary key,
+    nome varchar(100) not null,
+    conta varchar(100) not null,
+    contem BIT not null DEFAULT 0,
+    usuario VARCHAR(100) not null
+)
+
+alter table TipoContas ADD usuario VARCHAR(100) not null
+
+insert into TipoContas(nome,conta,contem,usuario) VALUES('Mercado','Mundial',0,'rodrigo')
+
+create table TipoContas(
+    id int identity(1,1) primary key,
+    nome varchar(100) not null,
+    conta varchar(100) not null,
+    contem BIT not null DEFAULT 0,
+    usuario VARCHAR(100) not null
+)
+
+alter table TipoContas ADD usuario VARCHAR(100) not null
+
+insert into TipoContas(nome,conta,contem,usuario) VALUES('Mercado','Mundial',0,'rodrigo')
+
+CREATE DATABASE AccountType;
+USE MeuBanco;
+
+create table AccountType(   id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    conta VARCHAR(100) NOT NULL,
+    contem TINYINT(1) DEFAULT 1,
+    usuario VARCHAR(100) NOT NULL);
