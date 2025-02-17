@@ -1,4 +1,4 @@
 public class DeleteRequest
 {
-  public required string nome { get; set; }
+  public required int id { get; set; }
 }

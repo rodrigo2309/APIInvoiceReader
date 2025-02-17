@@ -30,7 +30,7 @@ public class AccountTypeController : ControllerBase
     }
   }
 
-  [HttpGet]
+  [HttpPost]
   [Route("GetByUser")]
   public async Task<IActionResult> GetByUser(GetByUserRequest request)
   {

@@ -49,7 +49,7 @@ public class AccountTypeService : IAccountTypeService
   {
     var response = new DeleteResponse();
 
-    var accountType = await _accountTypeRepository.GetByNome(request.nome);
+    var accountType = await _accountTypeRepository.GetById(request.id);
 
     _accountTypeRepository.Delete(accountType);
 
