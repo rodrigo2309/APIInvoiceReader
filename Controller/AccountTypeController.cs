@@ -6,28 +6,10 @@ using Microsoft.EntityFrameworkCore;
 public class AccountTypeController : ControllerBase
 {
   private readonly IAccountTypeService _accountTypeService;
-  private readonly InvoiceReaderDbContext_MySQL _context;
 
-  public AccountTypeController(IAccountTypeService accountTypeService, InvoiceReaderDbContext_MySQL context)
+  public AccountTypeController(IAccountTypeService accountTypeService)
   {
     this._accountTypeService = accountTypeService;
-    _context = context;
-  }
-
-  [HttpGet]
-  [Route("HealthCheck")]
-  public void HealthChecksBuilderAddCheckExtensions()
-  {
-    // FormattableString formattableString = new();
-    try
-    {
-      _context.Database.OpenConnection();
-      Console.WriteLine("Conexão bem-sucedida!");
-    }
-    catch (Exception ex)
-    {
-      Console.WriteLine($"Erro na conexão: {ex.Message}");
-    }
   }
 
   [HttpPost]

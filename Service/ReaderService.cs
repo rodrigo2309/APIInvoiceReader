@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text;
 using APIInvoiceReader.Model;
 
@@ -29,7 +30,12 @@ namespace APIInvoiceReader.Service
 
         string[] colunas = linhas[i].Split(',');
 
-        Account account = new Account(colunas[0].Trim(), colunas[1].Trim(), colunas[2].Trim());
+        if (double.Parse(colunas[2].Trim(), CultureInfo.InvariantCulture) <= 0)
+        {
+          continue;
+        }
+
+        Account account = new Account(colunas[0].Trim(), colunas[1].Trim(), double.Parse(colunas[2].Trim(), CultureInfo.InvariantCulture));
 
         listaAccount.Add(account);
       }

@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 
 public class AccountTypeRepository : BaseRepository<AccountType>, IAccountTypeRepository
 {
-  private readonly InvoiceReaderDbContext_MySQL _context;
-  public AccountTypeRepository(InvoiceReaderDbContext_MySQL context) : base(context)
+  private readonly InvoiceReaderDbContext _context;
+  public AccountTypeRepository(InvoiceReaderDbContext context) : base(context)
   {
     _context = context;
   }

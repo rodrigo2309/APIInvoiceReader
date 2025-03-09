@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIInvoiceReader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61b83affde293ffe7200f9b4a01343dc20d55a47")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2b87c05c156d4296527960ae8180fcc28905659")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIInvoiceReader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIInvoiceReader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
